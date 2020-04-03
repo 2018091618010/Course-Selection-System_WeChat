@@ -1,0 +1,18 @@
+{
+  "usingComponents": {},
+  "tabBar": {
+    "list":[
+    {
+      "text":"",
+      "pagePath":"pages/teacher/teacher",
+      "iconPath":"",
+      "selectedIconPath":""
+    },
+    {
+      "text": "",
+      "pagePath": "pages/teacher/teacher",
+      "iconPath": "",
+      "selectedIconPath": ""
+    }]
+  }
+}

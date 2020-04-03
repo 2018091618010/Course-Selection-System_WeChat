@@ -1,0 +1,15 @@
+<view>
+<image src='../img/bj.png' class='background'></image>
+<text id='w1'>综合课程设计选课系统</text>
+<radio-group  bindchange="choose" style='position: absolute;top: 750rpx; left: 20%;'>
+  <radio value='teacher' style='color:white;font-size:35rpx;letter-spacing:4rpx;'>老师</radio>
+  <radio value='student' style='color:white;font-size:35rpx;letter-spacing:4rpx;margin-left: 130rpx;'>学生</radio>
+</radio-group>
+<form>
+<input type='textarea' name="puId" value="{{puId}}" style=' background-image: url(../img/denglu.png);'placeholder='Username'placeholder-style='color:white;font-size:35rpx;letter-spacing:4rpx;' bindinput="inputa"></input>
+<input type='password' name="password" value="{{password}}" style="background-image: url(../img/mima.png);" placeholder='Password' placeholder-style='color:white;letter-spacing:4rpx;font-size:35rpx;' bindinput="inputb"></input>
+<button id='login' bindtap='login'>login</button>
+</form>
+
+<text id='tip'>学生登录：账号为学号  密码默认身份证后6位</text>
+</view>
