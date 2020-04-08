@@ -1,18 +1,6 @@
 {
-  "usingComponents": {},
-  "tabBar": {
-    "list":[
-    {
-      "text":"",
-      "pagePath":"pages/teacher/teacher",
-      "iconPath":"",
-      "selectedIconPath":""
-    },
-    {
-      "text": "",
-      "pagePath": "pages/teacher/teacher",
-      "iconPath": "",
-      "selectedIconPath": ""
-    }]
+  "usingComponents": {
+    "firstPage":"/components/teacher/course/course",
+    "secondPage":"/components/teacher/teacher_inf/teacher_inf"
   }
 }

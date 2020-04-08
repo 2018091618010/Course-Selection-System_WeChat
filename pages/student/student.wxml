@@ -1,2 +1,15 @@
-<!--pages/student/student.wxml-->
-<text>pages/student/student.wxml</text>
+<!-- 底部切换菜单 -->
+<view class="tab-bar">
+ <cover-view class="tab-bar-border"></cover-view>
+ <cover-view wx:for="{{tabBar}}" wx:key="index" class="tab-bar-item" data-index="{{index}}"  bindtap="switchTab">
+        <cover-image src="{{nowIndex === index ? item.selectedIconPath : item.iconPath}}" ></cover-image>
+        <cover-view style="color: {{nowIndex === index ? selectedColor : color}}">{{item.text}}</cover-view>
+ </cover-view>
+</view>
+<!-- 页面容器 -->
+<view class="container">
+  <firstPage wx:if="{{nowIndex === 0}}"></firstPage> 
+  <!--nowpage === first page --> 
+  <secondPage wx:if="{{nowIndex === 1}}"></secondPage>
+  <thirdPage wx:if="{{nowIndex === 2}}"></thirdPage>
+</view>

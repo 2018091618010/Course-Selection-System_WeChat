@@ -16,7 +16,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.2",
-	"appid": "wxb5ffbeaebce773b8",
+	"appid": "wx12feb06adff0e73e",
 	"projectname": "%E7%BB%BC%E5%90%88%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E9%80%89%E8%AF%BE%E7%B3%BB%E7%BB%9F",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -24,6 +24,7 @@
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

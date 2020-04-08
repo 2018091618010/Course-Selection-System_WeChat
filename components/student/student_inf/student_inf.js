@@ -1,30 +1,11 @@
-// pages/student/student.js
+// pages/student_inf/student_inf.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      nowIndex:0,
-      color: "#000000",
-      selectedColor: "#1E90FF",
-      tabBar: [
-        {
-          "iconPath": "/img/course-stu.png",
-          "selectedIconPath": "/img/course2.png",
-          "text": "课程"
-        },
-        {
-          "iconPath": "/img/team.png",
-          "selectedIconPath": "/img/team2.png",
-          "text": "队伍"
-        },
-        {
-          "iconPath": "/img/student.png",
-          "selectedIconPath": "/img/student2.png",
-          "text": "我的"
-        }
-      ]
+
   },
 
   /**
@@ -33,12 +14,7 @@ Page({
   onLoad: function (options) {
 
   },
-  switchTab(e) {
-    const data = e.currentTarget.dataset
-    this.setData({
-      nowIndex: data.index
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

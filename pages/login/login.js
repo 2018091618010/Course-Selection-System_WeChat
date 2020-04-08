@@ -84,8 +84,22 @@ Page({
     console.log(this.data.puId)
     console.log(this.data.password)
     var that = this;
+
+    //测试
+      if (this.data.character=="teacher"){
+        wx.navigateTo({
+         url: '../teacher/teacher'
+      })
+     }
+      else {
+        wx.navigateTo({
+          url: '../student/student'
+        })
+      }
+      //测试
+      
     wx.request({
-      url: 'xxx',
+      url: 'http://127.0.0.1:8081',
       data: {
         character:this.data.character,
         id: this.data.puId,

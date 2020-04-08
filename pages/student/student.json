@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "firstPage":"/components/teacher/course/course",
+    "secondPage":"/components/student/student_team/student_team",
+    "thirdPage":"/components/student/student_inf/student_inf"
+  }
 }
