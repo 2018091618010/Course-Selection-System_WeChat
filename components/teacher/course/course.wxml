@@ -1,76 +1,34 @@
-<view class="appointment">
-  <view class="app-moduler">
-    <navigator url="url" class="mod-item">
-      <view class="mod-signup">
-        <image src="{{signupimg}}"></image>
-      </view>
-      <view class="mod-img">
-        <image src="{{imgsrc}}" class="mod-image"></image>
-      </view>
-      <view class="mod-title">
-         <text>标题标题标题标题标题</text>  
-      </view>
-      <view class="mod-info">
-        <view class="mod-icon">
-          <image src="{{iconsrc}}" class="icon"></image>
+<view class="page" >
+    <!-- 侧边栏内容 -->
+    <view class="page-slidebar">
+        <view class="page-content">
+        <scroll-view scroll-y  style='height: {{winHeight-80}}px'>
+             <view class='all clear'>
+                <block wx:key="lists" wx:for="{{lists}}">
+                    <view bindtap='jumpIndex' data-menuindex='{{index}}'>
+                        <view class='text-style'>
+                            <text class="{{indexId==index?'active1':''}}">{{item}}</text>
+                            <text class="{{indexId==index?'active':''}}"></text>
+                        </view>
+                    </view>
+                 </block>
+             </view>
+        </scroll-view>
+       
         </view>
-        <view class="moinfont">17人已申请</view>
-      </view>
-    </navigator>
-    
-    <navigator url="url" class="mod-item">
-      <view class="mod-signup">
-        <image src="{{signupimg}}"></image>
-      </view>
-      <view class="mod-img">
-        <image src="{{imgsrc}}" class="mod-image"></image>
-      </view>
-      <view class="mod-title">
-         <text>标题标题标题标题标题</text>  
-      </view>
-      <view class="mod-info">
-        <view class="mod-icon">
-          <image src="{{iconsrc}}" class="icon"></image>
-        </view>
-        <view class="moinfont">17人已申请</view>
-      </view>
-    </navigator>
+    </view>
 
-    <navigator url="url" class="mod-item">
-      <view class="mod-signup">
-        <image src="{{signupimg}}"></image>
-      </view>
-      <view class="mod-img">
-        <image src="{{imgsrc}}" class="mod-image"></image>
-      </view>
-      <view class="mod-title">
-         <text>标题标题标题标题标题</text>  
-      </view>
-      <view class="mod-info">
-        <view class="mod-icon">
-          <image src="{{iconsrc}}" class="icon"></image>
-        </view>
-        <view class="moinfont">17人已申请</view>
-      </view>
-    </navigator>
+    <!-- （open ? 'c-state' : ''）三元运算符： -->
+    <!-- 1.默认情况下 open 为 false -->
+    <!-- 2.当点击左上角图标的时候或者屏幕向左滑动，open 变化 true -->
+    <!-- 3.当 open 为 true 时，会加上类名为 c-state 和 cover 的 css 样式 -->
 
-    <navigator url="url" class="mod-item">
-      <view class="mod-signup">
-        <image src="{{signupimg}}"></image>
-      </view>
-      <view class="mod-img">
-        <image src="{{imgsrc}}" class="mod-image"></image>
-      </view>
-      <view class="mod-title">
-         <text>标题标题标题标题标题</text>  
-      </view>
-      <view class="mod-info">
-        <view class="mod-icon">
-          <image src="{{iconsrc}}" class="icon"></image>
+    <!-- bindtouchstart、 bindtouchmove、bindtouchend -->
+    <!-- 当手指触摸屏幕并滑动时，所触发的三个函数 -->
+    <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? ['c-state','cover'] : ''}} " style='height: {{winHeight-60}}px'>
+        <image bindtap="tap_ch" src="/img/laoshiguanli.png"></image>
+        <view class='coursecontent'> 
+            <text>welcome to select courses</text>
         </view>
-        <view class="moinfont">17人已申请</view>
-      </view>
-    </navigator>
-   </view>
+    </view>
 </view>
-

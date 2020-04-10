@@ -1,2 +1,19 @@
-<!--pages/student_team/student_team.wxml-->
-<text>pages/student_team/student_team.wxml</text>
+<view class="main" >
+  <view class="teams" >
+      <view wx:for="{{TeamInf}}" class="team" wx:key="id">
+      <view class="coursename">{{item.coursename}}</view>
+      <view class="teacher">老师：{{item.teacher}}</view>
+      <view class="LINE"></view>
+      <view class="captain">队长：{{item.captain}}</view>
+      <view class="cap_contactway">联系方式：{{item.cap_contactway}}</view>
+      <view class="teammember" style="font-size: 15px; margin-left: 4%;margin-top: 30rpx;">队员：</view>
+      <view class="member" wx:for="{{item.members}}" wx:for-item="members">{{members}} </view>
+      </view>
+  </view>
+</view>
+<view class='addbutton'>
+      <view class='add-item' bindtap="addteam">
+        <image src='/img/add.png'></image>
+        <text>创建队伍</text>
+      </view>      
+</view>

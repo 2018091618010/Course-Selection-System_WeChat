@@ -1,4 +1,5 @@
 
+
 .h10 {
   background: #f0f0f0;
 }
@@ -74,7 +75,7 @@
 
 .item_ico {
   float: left;
-  width: 27px;
+  width: 23px;
   height: 20px;
   padding: 13px 15px 10px 0;
 }

@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //固定tabbar
     nowIndex:0,
     color: "#000000",
     selectedColor: "#1E90FF",

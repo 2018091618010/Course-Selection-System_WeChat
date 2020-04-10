@@ -16,34 +16,35 @@
 <!-- 第二块 -->
 <view class="thirdblock">
  <view class="item" bindtap="openInf" data-index="1">
-        <image src="/img/me.png" class="item_ico"></image>
-        <span>我的信息</span>
+        <image src="/img/information.png" class="item_ico"></image>
+        <span>我的消息</span>
         <image src="/img/right.png" class="item_arrow"></image>
     </view>
      <view class="h1"></view>
     <view class="item" bindtap="openSetting">
-        <image src="/img/setting.png" class="item_ico"></image>
-        <span>已发布课程</span>
+        <image src="/img/publish.png" class="item_ico"></image>
+        <span>发布课程</span>
     </view>
      <view class="h1"></view>
     <view class="item" bindtap="openSetting">
-        <image src="/img/setting.png" class="item_ico"></image>
-        <span>已接受学生</span>
+        <image src="/img/studentmanagement.png" class="item_ico"></image>
+        <span>我的学生</span>
     </view>
 </view>
 <!-- 第三块 -->
 <view class="h10"></view>
-<view class="thirdblock">
+<view class="thirdblock" style="margin-bottom: 60px" >
     <view class="item"  data-index="2" bindtap="openOpinion">
         <image src="/img/suggest.png" class="item_ico"></image>
         <span>意见反馈</span>
         <image src="/img/right.png" class="item_arrow"></image>
     </view>
     <view class="h1"></view>
-    <view class="item" bindtap="openSetting">
-        <image src="/img/setting.png" class="item_ico"></image>
+    <view class="item" bindtap="openSetting" >
+        <image src="/img/setting.png" class="item_ico" ></image>
         <span>设置</span>
     </view>
+    
 </view>
 <view class="h10"></view>
 <view class="h10"></view>

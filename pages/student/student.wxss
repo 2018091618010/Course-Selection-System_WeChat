@@ -6,12 +6,13 @@
   left: 0;
   right: 0;
   height: 60px;
-  background: white;
+  background: rgb(238, 249, 253);
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
+  z-index: 1;
 }
 .tab-bar-border {
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color:#f0f0f0;
   position: absolute;
   left: 0;
   top: 0;
@@ -29,11 +30,11 @@
   flex-direction: column;
 }
 
-.tab-bar-item cover-image {
-  width: 27px;
-  height: 27px;
+.tab-bar-item image {
+  width: 33px;
+  height: 30px;
 }
 
-.tab-bar-item cover-view {
-  font-size: 10px;
+.tab-bar-item view {
+  font-size: 12px;
 }
