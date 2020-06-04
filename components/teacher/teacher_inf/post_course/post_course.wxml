@@ -1,0 +1,23 @@
+<form>
+<view class="page">
+    <view class="field-item vc">
+        <text class="field-item-label fw-700">课程名称</text>
+        <view class="field-item-val"><input name="coursename" placeholder="{{coursename}}"/></view>
+    </view>
+    <view class="field-item vc">
+        <text class="field-item-label fw-700">课程队伍数</text>
+        <view class="field-item-val" >
+        <picker style="margin-left: 50%;" value="{{index}}" range="{{teamrange}}" bindchange="setContent">
+        {{teamrange[index]}}</picker>
+        </view>
+    </view>
+    <view class="field-item-2">
+    <text class="field-item-label fw-700">课程描述</text>
+    <textarea class="courseinf" placeholder="详细的课程信息" name="courseinf" bindinput="setContent"></textarea>
+    </view>
+</view>
+
+<view class="footer">
+    <button formType="submit" class="field-ok fw-600 cc"  hover-class="field-ok-hover" >确 定</button>
+</view>
+</form>

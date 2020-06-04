@@ -1,0 +1,22 @@
+<block class="block" wx:for="{{courseList}}" wx:key="index">
+<view class="couserlist">
+
+  <view bindtap='bindShowList' data-idx="{{index}}"  class="top">
+  <!-- -->
+      <view class="coursename">{{item.coursename}}</view>
+      <image class="dropicon"
+      style="transform:{{flag[index]==1?'rotate('+a1+'deg)':'rotate(0deg)'}}; left:90%; " src="/img/展开.png"></image>
+  </view>
+
+  <!-- 下拉需要显示的列表 -->
+      <view class="select_box" wx:if="{{flag[index]==1}}">
+        <view wx:for="{{item.teamlist}}" wx:key="idnex" wx:if='{{index}}'>
+          <view bindtap="topage"
+          data-item="{{item}}"
+            class="select_one"
+          >{{item.teamname}} {{item.teamleader}}</view>
+        </view>
+      </view>
+ 
+</view>
+</block>

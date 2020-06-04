@@ -1,0 +1,62 @@
+page{
+  background-color: #ffffff;
+  font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+  font-size: 32rpx;
+}
+.navigator-hover{
+  background: none;
+}
+
+.cart-box{
+    padding-bottom: 100rpx;
+    padding-left: 30rpx;
+    width: 92%;
+}
+.cart-list{
+    margin-bottom:30rpx;
+    position: relative;
+    padding: 20rpx 20rpx 20rpx 200rpx;
+    height: 185rpx;
+    border-radius: 15px;
+    background-color: rgb(110, 146, 247);
+    color:#fff;
+}
+
+.cart-list .cart-thumb{
+    position: absolute;
+    top: 20rpx;
+    left: 25rpx;
+    width: 85rpx;
+    height: 85rpx;
+}
+.cart-list .cart-pro-name{
+    font-size:45rpx;
+    font-weight:bold;
+    display: inline-block;
+    line-height: 45rpx;
+    overflow: hidden;
+}
+.cart-list .cart-pro-inf{
+    display: inline-block;
+    width: 300rpx;
+    height: 105rpx;
+    line-height: 50rpx;
+    overflow: hidden;
+}
+
+.cart-del{
+    position: absolute;
+    right: 20rpx;
+    bottom: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 44rpx;
+}
+
+.cart-no-data{
+    padding:40rpx 0;
+    color: #999;
+    text-align: center;
+}
