@@ -5,6 +5,10 @@
         <view class="field-item-val"><input name="puId" placeholder="{{puId}}" disabled="true"/></view>
     </view>
     <view class="field-item vc">
+        <text class="field-item-label fw-700">姓名</text>
+        <view class="field-item-val"><input name="name" placeholder="{{name}}" disabled="true"/></view>
+    </view>
+    <view class="field-item vc">
         <text class="field-item-label fw-700">身份</text>
         <view class="field-item-val"><input name="character" placeholder="{{character}}" disabled="true"/></view>
     </view> 
@@ -17,7 +21,7 @@
     </view>
     <view class="field-item vc">
         <text class="field-item-label fw-700">联系方式</text>
-        <view class="field-item-val"><input type="email" name="email" placeholder="{{email}}"/></view>
+        <view class="field-item-val"><input name="contractway" placeholder="{{contractway}}"/></view>
     </view> 
 </view>
 

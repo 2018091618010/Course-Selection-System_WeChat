@@ -1,11 +1,12 @@
+
 <view class="page" >
     <!-- 侧边栏内容 -->
     <view class="page-slidebar">
         <view class="page-content">
         <scroll-view scroll-y  style='height: {{winHeight-80}}px'>
              <view class='all clear'>
-                <block wx:key="lists" wx:for="{{lists}}">
-                    <view bindtap='jumpIndex' data-menuindex='{{index}}'>
+                <block wx:key="tealist" wx:for="{{tealist}}">
+                    <view bindtap='jumpIndex' data-menuindex='{{index}}' data-teacher='{{item}}'>
                         <view class='text-style'>
                             <text class="{{indexId==index?'active1':''}}">{{item}}</text>
                             <text class="{{indexId==index?'active':''}}"></text>
@@ -14,7 +15,6 @@
                  </block>
              </view>
         </scroll-view>
-       
         </view>
     </view>
 
@@ -25,10 +25,20 @@
 
     <!-- bindtouchstart、 bindtouchmove、bindtouchend -->
     <!-- 当手指触摸屏幕并滑动时，所触发的三个函数 -->
-    <view bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? ['c-state','cover'] : ''}} " style='height: {{winHeight-60}}px'>
-        <image bindtap="tap_ch" src="/img/laoshiguanli.png"></image>
-        <view class='coursecontent'> 
-            <text>welcome to select courses</text>
+    <view style="background-image: url(/img/bg2.jpg);" bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? ['c-state','cover'] : ''}} " style='height: {{winHeight-60}}px'>
+        <view style="background-color:rgb(238, 249, 253); height=60rpx">
+            <image bindtap="tap_ch" src="/img/laoshiguanli.png"></image>
+            <text style="display: block; font-size: 40rpx;color: rgb(27, 31, 231);padding-bottom:30rpx;padding-top:30rpx;text-align:center;font-weight: bold;">欢迎来选课!</text>
         </view>
+        <view  class="container container-fill"> 
+	        <view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
+                <view wx:key="coulist" wx:for="{{coulist}}" class="section section01 {{scrollindex==index?'active2':''}}" style="background-image: url(/img/bg2.jpg);">
+                    <text class="section-maintitle">{{item.coursename}}</text>
+                    <text class="section-subtitle">{{item.coursestatus}}</text>
+                    <text class="section-subtitle">队伍数量：{{item.teamnumber}}</text>
+                    <text class="section-subtitle">详细：{{item.courseinfo}}</text>
+                </view>
+            </view>
+        </view> 
     </view>
 </view>

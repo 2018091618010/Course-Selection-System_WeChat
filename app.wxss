@@ -4,3 +4,16 @@ page {
   width: 100%;
   background: #f4f4f4;
 }
+/**隐藏**/
+.n{display: none;}
+
+/**居中**/
+.cc{ display: flex;justify-content: center; align-items: center;}
+
+/**垂直居中**/
+.vc{ display: flex; align-items: center;}
+
+/**加粗**/
+.fw-600{font-weight: 600;}
+.fw-700{font-weight: 700;}
+.fw-900{font-weight: 900;}

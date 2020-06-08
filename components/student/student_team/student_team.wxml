@@ -11,9 +11,3 @@
       </view>
   </view>
 </view>
-<view class='addbutton'>
-      <view class='add-item' bindtap="addteam">
-        <image src='/img/add.png'></image>
-        <text>创建队伍</text>
-      </view>      
-</view>

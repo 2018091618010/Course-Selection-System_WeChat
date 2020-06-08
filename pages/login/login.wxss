@@ -45,9 +45,11 @@ form input{
   position: absolute;
   margin-left: 25%;
   width: 50%;
-  top: 400rpx;
+  top: 450rpx;
+  filter:contrast(2.4);
   border-radius: 60rpx;
-  background-color: rgb(69, 12, 160);
+  opacity: 0.75;
+  background-color: rgb(110, 146, 247);
   color: white;
   text-align: center;
 }

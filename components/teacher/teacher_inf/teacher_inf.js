@@ -1,29 +1,61 @@
 Component({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    user:"",
+    name:"",
+    character:""
+  },
+  lifetimes: {
+    attached: function() {
+    var user = wx.getStorageSync('userdata')
+    var name = wx.getStorageSync('name')
+    this.setData({
+      user:user.puId,
+      name:name,
+      character:"老师"
+    })
+  },
   },
   methods:{
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
 
+  openMynews:function(){
+    //打开我的消息
+    wx.navigateTo({
+      url: '/components/teacher/teacher_inf/tea_news/tea_news',
+  })
+  },
+  openPost_course:function(){
+    //打开发布课程
+    wx.navigateTo({
+      url: '/components/teacher/teacher_inf/post_course/post_course',
+  })
+  },
+  openMystudents:function(){
+    //打开我的学生
+    wx.navigateTo({
+      url: '/components/teacher/teacher_inf/tea_students/tea_students',
+  })
+  },
+  openOpinion:function(){
+    //打开意见反馈
+    wx.navigateTo({
+        url: '/pages/opinion/opinion',
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  aboutUs:function(){
+    //打开关于我们
+    wx.navigateTo({
+        url: '/pages/aboutUs/aboutUs',
+    })
+   },
 
+  openSetting:function(){
+    //打开设置
+    wx.navigateTo({
+        url: '/pages/setting/setting',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     wx.setTabBarItem(
     {
@@ -40,40 +72,5 @@ Component({
     }
     )
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 }
 })

@@ -6,7 +6,7 @@
   <radio value='student' style='color:white;font-size:35rpx;letter-spacing:4rpx;margin-left: 130rpx;'>学生</radio>
 </radio-group>
 <form>
-<input type='textarea' name="puId" value="{{puId}}" style=' background-image: url(/img/username.png);'placeholder='Username'placeholder-style='color:white;font-size:35rpx;letter-spacing:4rpx;' bindinput="inputa"></input>
+<input type='textarea' name="puId" value="{{puId}}" style="background-image: url(/img/username.png);" placeholder='Username' placeholder-style='color:white;font-size:35rpx;letter-spacing:4rpx;' bindinput="inputa"></input>
 <input type='password' name="password" value="{{password}}" style="background-image: url(/img/password.png);" placeholder='Password' placeholder-style='color:white;letter-spacing:4rpx;font-size:35rpx;' bindinput="inputb"></input>
 <button id='login' bindtap='login'>login</button>
 </form>

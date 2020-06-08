@@ -8,28 +8,43 @@ Component({
   },
 
   data: {
+    newstype:0,
     news:[],               // 消息列表
     hasList:false,          // 列表是否有数据
-    totalPrice:0,           // 总价，初始为0
-    selectAllStatus:true,    // 全选状态，默认全选
+    teamlist:[],
     obj:{
         name:"hello"
     }
   },
  
-  
+  lifetimes: {
+    attached: function() {
+    //获取待审核的队伍信息
+    var that = this
+    var user = wx.getStorageSync('userdata')
+    wx.request({
+        url: "http://www.justinstar.top/selcou/teacher/showcouteam",
+        method:'GET',
+        data:{
+            teaid:user.puId
+        },
+        success: function (res) {
+         //  console.log(res.data)
+         that.setData({
+            news: res.data.data.teamlist,
+          });
+        }
+    })
+  },
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    
     onShow() {
       this.setData({
         hasList: true,
-        news:[
-          {id:1,title:'入队请求',detail:'张三想要加入'},
-          {id:2,title:'组队请求结果',detail:'拒绝'},
-          {id:3,title:'选课请求结果',detail:'老师同意'}
-        ]
       });
       this.getTotalPrice();
     },
@@ -46,10 +61,7 @@ Component({
       });
       this.getTotalPrice();
     },
-  
-    /**
-     * 消息
-     */
+   //关闭消息
     deleteList(e) {
       const index = e.currentTarget.dataset.index;
       let news = this.data.news;
@@ -62,6 +74,51 @@ Component({
           hasList: false
         });
       }
+    }, 
+    //接受
+    accept(e){
+      console.log(e.currentTarget.dataset.teamid);
+      var teamid = e.currentTarget.dataset.teamid
+      var that = this
+     wx.request({
+        url: 'http://www.justinstar.top/selcou/teacher/agreeteam',
+        data:{
+          teamid:teamid,
+          teamstatus:"已通过"
+        },
+        success: function (res) {
+          if (res.data.message == "success") {
+            wx.showModal({
+              title: '已接受该队伍！',
+              showCancel:false,
+              confirmText:'知道了',
+              })
+            that.deleteList(e)
+          }
+        }
+      })
+    },
+    //拒绝
+    refuse(e){
+      var teamid = e.currentTarget.dataset.teamid
+      var that = this
+      wx.request({
+        url: 'http://www.justinstar.top/selcou/teacher/agreeteam',
+        data:{
+          teamid:teamid,
+          teamstatus:"未通过"
+        },
+        success: function (res) {
+          if (res.data.message == "success") {
+            wx.showModal({
+              title: '已拒绝该队伍！',
+              showCancel:false,
+              confirmText:'知道了',
+              })
+            that.deleteList(e)
+          }
+        }
+      })
     },
   }
 })

@@ -94,7 +94,10 @@ Component({
   },
   methods:{
     
-  
+    addteam(){
+
+    },
+    
   refresh(){  
   var that = this;
   wx.request({

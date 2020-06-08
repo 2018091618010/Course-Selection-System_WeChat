@@ -2,7 +2,10 @@
   "pages": [
     "pages/login/login",
     "pages/student/student",
-    "pages/teacher/teacher"
+    "pages/teacher/teacher",
+    "pages/opinion/opinion",
+    "pages/aboutUs/aboutUs",
+    "pages/setting/setting"
   ],
   "window": {
     "backgroundTextStyle": "light",

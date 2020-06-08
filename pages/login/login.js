@@ -10,61 +10,6 @@ Page({
     character:""
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   choose: function (e) {
     this.setData({
       character: e.detail.value
@@ -80,54 +25,75 @@ Page({
       password: e.detail.value
     });
   },
-  login: function (e) {
-    console.log(this.data.puId)
-    console.log(this.data.password)
-    var that = this;
 
-    //测试
+  login: function (e) {
+      var that = this;
       if (this.data.character=="teacher"){
-        wx.navigateTo({
-         url: '../teacher/teacher'
-      })
+        wx.request({
+          url: 'http://www.justinstar.top/selcou/teacher/login',
+          data: {
+            password: this.data.password,
+            teaid: this.data.puId
+          },
+          method: "GET",
+          success: function (res) {
+            if (res.data.message == "success") {
+              wx.setStorageSync('userdata',that.data)//设置缓存
+              wx.setStorageSync('name',res.data.data.teaname)
+              wx.showToast({
+                    title: '登录成功',
+                    image: '/img/loginsuccess.png'
+                  })
+              setTimeout(function () {
+                    wx.navigateTo({
+                      url: '../teacher/teacher'
+                    })
+                  }, 1000) //延迟1s跳转    
+            }
+            else {
+              wx.showToast({
+                title: '登录失败',
+                image: '/img/loginfail.png'
+              })
+            }
+          }
+        })
      }
-      else {
-        wx.navigateTo({
-          url: '../student/student'
+      else if(this.data.character=="student") {
+        wx.request({
+          url: 'http://www.justinstar.top/selcouse/student/stulogin',
+          data: {
+            id: this.data.puId,
+            pas: this.data.password,
+          },
+          method: "GET",
+          success: function (res) {
+            if (res.data.message == "success") {
+              wx.setStorageSync({'userdata':that.data})//设置当前用户信息缓存
+              wx.showToast({
+                    title: '登录成功',
+                    image: '/img/loginsuccess.png'
+                  })
+              setTimeout(function () {
+                    wx.navigateTo({
+                      url: '../teacher/teacher'
+                    })
+                  }, 1000) //延迟1s跳转    
+            }
+            else {
+              wx.showToast({
+                title: '登录失败',
+                image: '/img/loginfail.png'
+              })
+            }
+          }
         })
       }
-      //测试
-      
-    wx.request({
-      url: 'http://127.0.0.1:8081',
-      data: {
-        character:this.data.character,
-        id: this.data.puId,
-        pass: this.data.password
-      },
-      method: "POST",
-      success: function (res) {
-        if (res.data == "success") {
-          console.log(that.data.puId);
-          if (this.data.character=="teacher"){
-              wx.navigateTo({
-                url: '../teacher/teacher',
-          })
-          }
-          else {
-            wx.navigateTo({
-              url: '../student/student',
-            })
-          }
-        }
-        else {
-          wx.showToast({
-            title: '账号密码输入有误',
-            image: '../img/fail.png'
-          })
-        }
+      else {
+        wx.showToast({
+          title: '请选择身份！',
+          image: '/img/loginfail.png'
+        })
       }
-    })
-
   },
 })

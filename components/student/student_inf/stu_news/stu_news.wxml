@@ -2,7 +2,7 @@
     <view wx:if="{{hasList}}">
         <view class="cart-box">
             <view class="cart-list" wx:for="{{news}}" wx:key="{{index}}">
-                <image class="cart-thumb" src="/img/消息提示.png"></image>
+                <image class="cart-thumb" src="/img/reminder.png"></image>
                 <text class="cart-pro-name">{{item.title}}</text>
                 <text class="cart-pro-inf">{{item.detail}}</text>
                 <text class="cart-del" bindtap="deleteList" data-index="{{index}}">×</text>

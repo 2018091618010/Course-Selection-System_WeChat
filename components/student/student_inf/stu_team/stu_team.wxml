@@ -1,13 +1,8 @@
-<view class="main" >
-  <view class="teams" >
-    <view class="team">
-      <view class="coursename">{{coursename}}</view>
-      <view class="teacher">老师：{{teacher}}</view>
-      <view class="LINE"></view>
-      <view class="captain">队长：{{captain}}</view>
-      <view class="cap_contactway">联系方式：{{cap_contactway}}</view>
-      <view class="teammember" style="font-size: 15px; margin-left: 4%;margin-top: 30rpx;">队员：</view>
-      <view class="member" wx:for="{{item.members}}" wx:for-item="members">{{members.name}}  {{members.email}}</view>
-    </view> 
- </view>
+<view  class="container container-fill"> 
+	<view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
+    <view wx:key="{{coulist}}" wx:for="{{coulist}}" class="section section01 {{scrollindex==index?'active2':''}}" style="background-image: url(/img/bg2.jpg);">
+			<text class="section-maintitle">{{item.coursename}}</text>
+			<text class="section-subtitle">{{item.coursestatus}}</text>
+		</view>
+    </view>
 </view>

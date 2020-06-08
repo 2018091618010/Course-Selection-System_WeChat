@@ -23,46 +23,53 @@ Component({
    */
   methods: {
     setContent:function(e){
-
+      
       this.setData({
         index: e.detail.value
       })
+      
     },
     formSubmit:function(e){
-      var email =e.detail.value.email
-    
-          var student = wx.getStorageSync('student');
-          var no=student.student.no;
-          var url ="接口url地址";
+          var user = wx.getStorageSync('userdata')
+          console.log(e);
+          var couname = e.detail.value.coursename
+          var couinf = e.detail.value.courseinf
+          if(couname==''|| couinf==''){
+            wx.showToast({
+              title: '课程信息不能为空',
+              icon:'none',
+              duration:1000
+            })
+          }else {
+            
+          var url ="http://www.justinstar.top/selcou/teacher/putcourse";
           wx.request({
             url: url,
-            method:'POST',
-            data:{
-            no:no,
-            oldpwd:oldpwd,
-            newpwd:newpwd
+            method:'GET',
+            data:{         
+              courseinfo:couinf,
+              coursename:couname,   
+              teaid:user.puId,
+              number:Number(Number(this.data.index)+1)
             },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            success: function (res) {
-             //  console.log(res.data)
-             wx.showModal({
-                 title: '提示',
+          success: function (res) {
+            console.log(res);
+            if (res.data.message == "success"){
+              wx.showModal({
+                 title: '课程发布成功！',
                  showCancel:false,
                  confirmText:'知道了',
-                 content: content
                  })
-     
-                 wx.showToast({
-                     title: '提交成功',
-                     icon: 'success',
-                     duration: 2000
-                 })
-                 this.hideModal();
+            }else{
+              wx.showModal({
+                title: '课程发布失败！',
+                showCancel:false,
+                confirmText:'知道了',
+                })
             }
-  
+            }
           })
+          }
   },
 
   }
