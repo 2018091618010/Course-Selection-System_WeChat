@@ -2,7 +2,7 @@
 <view style="margin:10px 15px 10px 15px">
     <view class="photo item" style="height:300px;line-height: 24px;">
         <view class="photo-box" style="width:100px;margin:0 auto;padding-top:10px;">
-            <image src="../../img/about us.png" style="border-radius: 100px" class="personal_logo" id="personal_logo"></image>
+            <image src="../../img/aboutus.png" style="border-radius: 100px" class="personal_logo" id="personal_logo"></image>
         </view>
         <view class="feedbackText">
             <text>我们设计该系统希望能让学生和老师都能从中获得便利，通过我们的平台可以更快更好地解决身边的问题同时增加老师的办公效率。让老师可以更加快速的处理事务的同时也可以让同学们更快了解自己的选课情况并且及时做出补救。我们期望用这个系统来帮助绝大部分同学选到自己满意的课程</text>

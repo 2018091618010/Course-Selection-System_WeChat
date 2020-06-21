@@ -27,13 +27,14 @@
     <!-- 当手指触摸屏幕并滑动时，所触发的三个函数 -->
     <view style="background-image: url(/img/bg2.jpg);" bindtouchmove="tap_drag" bindtouchend="tap_end" bindtouchstart="tap_start" class="page-top {{open ? ['c-state','cover'] : ''}} " style='height: {{winHeight-60}}px'>
         <view style="background-color:rgb(238, 249, 253); height=60rpx">
-            <image bindtap="tap_ch" src="/img/laoshiguanli.png"></image>
+            <image bindtap="tap_ch" src="/img/teacherlist.png"></image>
             <text style="display: block; font-size: 40rpx;color: rgb(27, 31, 231);padding-bottom:30rpx;padding-top:30rpx;text-align:center;font-weight: bold;">欢迎来选课!</text>
         </view>
         <view  class="container container-fill"> 
 	        <view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
-                <view wx:key="coulist" wx:for="{{coulist}}" class="section section01 {{scrollindex==index?'active2':''}}" style="background-image: url(/img/bg2.jpg);">
+                <view wx:key="coulist" wx:for="{{coulist}}" class="section section01 {{scrollindex==index?'active2':''}}" style=" background-repeat: no-repeat; background-size: 100% 100%;">
                     <text class="section-maintitle">{{item.coursename}}</text>
+                    <text class="section-subtitle">课程id：{{item.courseid}}</text>
                     <text class="section-subtitle">{{item.coursestatus}}</text>
                     <text class="section-subtitle">队伍数量：{{item.teamnumber}}</text>
                     <text class="section-subtitle">详细：{{item.courseinfo}}</text>

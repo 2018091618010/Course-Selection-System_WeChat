@@ -5,11 +5,11 @@ Page({
    */
   data: {
     puId:"",
-    oldpassword:"123456",
+    oldpassword:"",
     name:"",
     character:"",
     contractway:"",
-    newpassword:"123456",
+    newpassword:"",
     showModal: false
   },
   /**
@@ -29,26 +29,64 @@ Page({
 //修改
 formSubmit:function(e){
         var contractway = e.detail.value.contractway
-        var url ="http://www.justinstar.top/selcou/teacher/corrpwd";
-        wx.request({
-          url: url,
-          method:'GET',
-          data:{
-            password:this.data.newpassword,
-            phone:contractway,
-            teaid:this.data.puId,
-            teaname:this.data.name
-          },
-          success: function (res) {
-           if(res.data.message == "success"){
-            wx.showModal({
-               title: '提交成功',
-               showCancel:false,
-               confirmText:'知道了'
-               })
-          }
+        var user = wx.getStorageSync('userdata')
+        if(user.character == "teacher"){
+          var url ="https://autumndreams.club/selcou/teacher/corrpwd";
+                  wx.request({
+                    url: url,
+                    method:'GET',
+                    data:{
+                      password:this.data.newpassword,
+                      phone:contractway,
+                      teaid:this.data.puId,
+                      teaname:this.data.name
+                    },
+                    success: function (res) {
+                    if(res.data.message == "success"){
+                      wx.showModal({
+                        title: '提交成功',
+                        showCancel:false,
+                        confirmText:'知道了'
+                        })
+                    }else{
+                      wx.showModal({
+                        title: '提交失败',
+                        showCancel:false,
+                        confirmText:'知道了'
+                        })
+                    }
+                    }
+                  })
+
+        }else if(user.character == "student"){
+          var url ="https://autumndreams.club/selcourse/student/stuupdatepass";
+          wx.request({
+            url: url,
+            method:'GET',
+            data:{
+              id:this.data.puId,
+              npass:this.data.newpassword,
+              opass:this.data.oldpassword,
+            },
+            success: function (res) {
+            if(res.data.message == "success"){
+              wx.showModal({
+                title: '提交成功',
+                showCancel:false,
+                confirmText:'知道了'
+                })
+            }else{
+              wx.showModal({
+                title: '提交失败',
+                showCancel:false,
+                confirmText:'知道了'
+                })
+            }
+            }
+          })
+
         }
-        })
+        
 },
 //修改密码框
 showDialogBtn: function() {

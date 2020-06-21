@@ -45,7 +45,7 @@
     </view>
     <view class="h1"></view>
     <view class="item" bindtap="aboutUs" data-index="4">
-        <image src="/img/about us.png" class="item_ico"></image>
+        <image src="/img/aboutus.png" class="item_ico"></image>
         <span>关于我们</span>
         <image src="/img/right.png" class="item_arrow"></image>
     </view>

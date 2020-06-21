@@ -1,13 +1,56 @@
-<view class="main" >
-  <view class="teams" >
-      <view wx:for="{{TeamInf}}" class="team" wx:key="id">
-      <view class="coursename">{{item.coursename}}</view>
-      <view class="teacher">老师：{{item.teacher}}</view>
-      <view class="LINE"></view>
-      <view class="captain">队长：{{item.captain}}</view>
-      <view class="cap_contactway">联系方式：{{item.cap_contactway}}</view>
-      <view class="teammember" style="font-size: 15px; margin-left: 4%;margin-top: 30rpx;">队员：</view>
-      <view class="member" wx:for="{{item.members}}" wx:for-item="members">{{members}} </view>
+<view class="page" >
+    <!-- <view class="page-slidebar">
+        <view class="page-content">
+        <scroll-view scroll-y  style='height: {{winHeight-80}}px'>
+             <view class='all clear'>
+                <block wx:key="id" wx:for="{{id}}">
+                    <view bindtap='jumpIndex' data-menuindex='{{index}}' data-id='{{item}}'>
+                        <view class='text-style'>
+                            <text class="{{indexId==index?'active1':''}}">{{item}}</text>
+                            <text class="{{indexId==index?'active':''}}"></text>
+                        </view>
+                    </view>
+                 </block>
+             </view>
+        </scroll-view>
+        </view>
+    </view>侧边栏内容 -->
+    
+    <view style=  class="page-top" style='height: {{winHeight-60}}px'>
+        <view style="background-color:rgb(238, 249, 253); height=60rpx">
+            <text style="display: block; font-size: 40rpx;color: rgb(27, 31, 231);padding-bottom:30rpx;padding-top:30rpx;text-align:center;font-weight: bold;">课程组队</text>
+        </view>
+        <view  class="container container-fill"> 
+	        <view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
+           <!-- <view class="scroll"> -->
+                <view  wx:key="teamlist" wx:for="{{teamlist}}" class="section domX section01 {{scrollindex==index?'active2':''}}" style=" background-repeat: no-repeat; background-size: 100% 100%;" id="item{{index}}">
+                    <text class="section-maintitle">课程id: {{item.courseid2}}</text>
+                    <text class="section-subtitle">队伍id: {{item.teamid}}</text>
+                    <text class="section-subtitle">队长id：{{item.stuid2}}</text>
+                    <text class="section-subtitle">队伍简介：{{item.teaminfo}}</text>
+                    <text class="section-subtitle">队伍状态：{{item.teamstatus}}</text> 
+                </view>
+            </view>
+        </view> 
+    </view>
+    <view class="Appli" wx:if='{{appli==true}}'>
+        <input bindinput="realname" wx:model="{{text}}" type='text' placeholder="请简短地介绍一下你自己"/><button size='mini' style="color:rgb(110, 146, 247);" bindtap='realnameConfirm'>提交</button>
+    </view>
+
+    <button class='mini-btn' size='mini' bindtap='join'>我要加入</button>
+    <button class='create' size='mini' bindtap='creatteam'>创建队伍</button>
+    <!--
+   <view class='page_row' bindtap="suo">
+    <view class="search">
+      <view class="df search_arr">
+        <icon class="searchcion" size='20' type='search'></icon>
+        <input class="" disabled placeholder="请输入关键字" value="{{searchValue}}"/>
       </view>
-  </view>
+    </view>
+    <view class='sousuo'>搜索</view>
+    </view>
+    
+    -->  
+      
+
 </view>

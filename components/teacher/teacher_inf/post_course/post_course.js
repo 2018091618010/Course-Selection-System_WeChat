@@ -42,7 +42,7 @@ Component({
             })
           }else {
             
-          var url ="http://www.justinstar.top/selcou/teacher/putcourse";
+          var url ="https://autumndreams.club/selcou/teacher/putcourse";
           wx.request({
             url: url,
             method:'GET',

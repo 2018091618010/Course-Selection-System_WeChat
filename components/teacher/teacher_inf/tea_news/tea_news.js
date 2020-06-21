@@ -23,7 +23,7 @@ Component({
     var that = this
     var user = wx.getStorageSync('userdata')
     wx.request({
-        url: "http://www.justinstar.top/selcou/teacher/showcouteam",
+        url: "https://autumndreams.club/selcou/teacher/showcouteam",
         method:'GET',
         data:{
             teaid:user.puId
@@ -43,13 +43,29 @@ Component({
   methods: {
     
     onShow() {
-      this.setData({
-        hasList: true,
-      });
-      this.getTotalPrice();
+      wx.showToast({
+        icon: 'loading',
+        title: '消息更新中...',
+        mask: true
+        });
+
+      setTimeout(() => {
+        let news = this.data.news;
+        console.log(news);
+        if(!news.length){
+          this.setData({
+            hasList: false
+          });
+        }else{
+          this.setData({
+            hasList: true
+          });
+        }
+      },1000);
+      
     },
     /**
-     * 当前商品选中事件
+     * 选中事件
      */
     selectList(e) {
       const index = e.currentTarget.dataset.index;
@@ -77,11 +93,10 @@ Component({
     }, 
     //接受
     accept(e){
-      console.log(e.currentTarget.dataset.teamid);
       var teamid = e.currentTarget.dataset.teamid
       var that = this
      wx.request({
-        url: 'http://www.justinstar.top/selcou/teacher/agreeteam',
+        url: 'https://autumndreams.club/selcou/teacher/agreeteam',
         data:{
           teamid:teamid,
           teamstatus:"已通过"
@@ -103,7 +118,7 @@ Component({
       var teamid = e.currentTarget.dataset.teamid
       var that = this
       wx.request({
-        url: 'http://www.justinstar.top/selcou/teacher/agreeteam',
+        url: 'https://autumndreams.club/selcou/teacher/agreeteam',
         data:{
           teamid:teamid,
           teamstatus:"未通过"

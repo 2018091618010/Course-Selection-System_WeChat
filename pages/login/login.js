@@ -30,7 +30,7 @@ Page({
       var that = this;
       if (this.data.character=="teacher"){
         wx.request({
-          url: 'http://www.justinstar.top/selcou/teacher/login',
+          url: 'https://autumndreams.club/selcou/teacher/login',
           data: {
             password: this.data.password,
             teaid: this.data.puId
@@ -42,7 +42,7 @@ Page({
               wx.setStorageSync('name',res.data.data.teaname)
               wx.showToast({
                     title: '登录成功',
-                    image: '/img/loginsuccess.png'
+                    image: '/img/loginsuccess.png',
                   })
               setTimeout(function () {
                     wx.navigateTo({
@@ -60,8 +60,9 @@ Page({
         })
      }
       else if(this.data.character=="student") {
+      
         wx.request({
-          url: 'http://www.justinstar.top/selcouse/student/stulogin',
+          url: 'https://autumndreams.club/selcourse/student/stulogin',
           data: {
             id: this.data.puId,
             pas: this.data.password,
@@ -69,22 +70,34 @@ Page({
           method: "GET",
           success: function (res) {
             if (res.data.message == "success") {
-              wx.setStorageSync({'userdata':that.data})//设置当前用户信息缓存
+              wx.setStorageSync('userdata',that.data)//设置当前用户信息缓存
+              wx.setStorageSync('name',res.data.data.Student.stuname)
+              wx.setStorageSync('major',res.data.data.Student.stumajor)
               wx.showToast({
                     title: '登录成功',
                     image: '/img/loginsuccess.png'
                   })
               setTimeout(function () {
                     wx.navigateTo({
-                      url: '../teacher/teacher'
+                      url: '../student/student'
                     })
                   }, 1000) //延迟1s跳转    
             }
-            else {
-              wx.showToast({
-                title: '登录失败',
-                image: '/img/loginfail.png'
-              })
+            else if(res.data.message == "账号不存在"){
+              wx.showModal({
+                title: '账号不存在',
+                showCancel:false,
+                confirmText:'知道了',
+                confirmColor:"red"
+                })
+            }
+            else if(res.data.message == "密码错误"){
+              wx.showModal({
+                title: '密码错误',
+                showCancel:false,
+                confirmText:'知道了',
+                confirmColor:"red"
+                })
             }
           }
         })

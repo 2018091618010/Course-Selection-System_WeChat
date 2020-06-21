@@ -1,14 +1,14 @@
 <view class="main">
     <view wx:if="{{hasList}}">
         <view class="cart-box">
-            <view class="cart-list" wx:for="{{news}}" wx:key="{{index}}">
+            <view class="cart-list" wx:for="{{news}}" wx:key="index">
                 <image class="cart-thumb" src="/img/reminder.png"></image>
                 <text class="cart-pro-name">待审核队伍</text>
                 <text class="cart-pro-inf">申请课程：{{item.coursename}}</text>
                 <text class="cart-pro-inf">队长：{{item.captainname}} 学号：{{item.captain}}</text>
                 <text class="cart-pro-inf" style="padding-right:250rpx">队伍人数：{{item.number}}</text>
-                <button class="cart-accept" bindtap="accept" data-teamid='{{item.teamid}}' style="width: 200rpx;" >接受</button>
-                <button class="cart-refuse" bindtap="refuse" data-teamid='{{item.teamid}}' style="width: 200rpx; margin-left: 30rpx;">拒绝</button>
+                <button class="cart-accept" bindtap="accept" data-teamid='{{item.teamid}}' style="width: 200rpx; margin-top:30rpx;">接受</button>
+                <button class="cart-refuse" bindtap="refuse" data-teamid='{{item.teamid}}' style="width: 200rpx; margin-left: 30rpx; margin-top:30rpx;">拒绝</button>
             </view>
         </view>   
     <!--    <view class="cart-footer">

@@ -11,6 +11,7 @@
 					<view class="center_info">   
 						<view class="center_name">欢迎 {{name}} {{character}} !</view>
                         <view class="center_content">账号：{{user}}</view>
+                        <view class="center_content">专业：{{major}}</view>
 					</view>
 				</view>		
 			</view>
@@ -45,7 +46,7 @@
     </view>
     <view class="h1"></view>
     <view class="item" bindtap="aboutUs" data-index="4">
-        <image src="/img/about us.png" class="item_ico"></image>
+        <image src="/img/aboutus.png" class="item_ico"></image>
         <span>关于我们</span>
         <image src="/img/right.png" class="item_arrow"></image>
     </view>

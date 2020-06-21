@@ -1,20 +1,25 @@
 <view class="main">
     <view wx:if="{{hasList}}">
         <view class="cart-box">
-            <view class="cart-list" wx:for="{{news}}" wx:key="{{index}}">
+            <view class="cart-list" wx:for="{{teamnews}}" wx:key="index">
                 <image class="cart-thumb" src="/img/reminder.png"></image>
-                <text class="cart-pro-name">{{item.title}}</text>
-                <text class="cart-pro-inf">{{item.detail}}</text>
-                <text class="cart-del" bindtap="deleteList" data-index="{{index}}">×</text>
+                <text class="cart-pro-name">入队申请</text>
+                <text class="cart-pro-inf">队伍编号：{{item.message.teamid3}}</text>
+                <text class="cart-pro-inf">学生名字：{{item.studentname}}  学号：{{item.message.stuid3}}</text>
+                <text class="cart-pro-inf">申请备注：{{item.message.applycontext}}</text>
+                <button class="cart-accept" bindtap="accept" data-teamid='{{item.message.teamid3}}' style="width: 200rpx; margin-top:30rpx;">接受</button>
+                <button class="cart-refuse" bindtap="refuse" data-teamid='{{item.message.teamid3}}' style="width: 200rpx; margin-left: 30rpx; margin-top:30rpx;">拒绝</button>
             </view>
         </view>   
-    <!--    <view class="cart-footer">
-            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll"/>
-            <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll"/>
-            <text>全选</text>
-            <text class="cart-toatl-price">￥{{totalPrice}}</text>
-        </view>
-      -->
+
+        <view class="cart-box">
+            <view class="cart-list" wx:for="{{coursenews}}" wx:key="{{couindex}}" style="background-color: #21bb29;">
+                <image class="cart-thumb" src="/img/reminder.png"></image>
+                <text class="cart-pro-name">申请课程反馈信息</text>
+                <text class="cart-pro-name" style="font-size:32rpx;">队伍编号    {{item.teamid}}</text>
+                <text class="cart-pro-name" style="font-size:38rpx;">{{item.status}}</text>
+            </view>
+        </view>   
     </view>
     <view wx:else>
         <view class="cart-no-data">暂时还没有消息~~</view>

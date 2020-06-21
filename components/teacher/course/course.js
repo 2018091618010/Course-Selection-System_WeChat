@@ -36,7 +36,7 @@ Component({
           mask: true
         });
         wx.request({
-            url: "http://www.justinstar.top/selcou/teacher/showname",
+            url: "https://autumndreams.club/selcou/teacher/showname",
             method:'GET',
             success: function (res) {
                 if (res.data.message == "success") {
@@ -56,19 +56,17 @@ Component({
     let curteacher =  e.currentTarget.dataset.teacher
     var user = wx.getStorageSync('userdata')
     let that = this
-    console.log(this.data.lists)
     that.setData({
         indexId: index,
         curteacher:curteacher     
     });
     wx.request({
-        url: "http://www.justinstar.top/selcou/teacher/showcourse",
+        url: "https://autumndreams.club/selcou/teacher/showcourse",
         method:'GET',
         data:{
             teaid:index
         },
         success: function (res) {
-         //  console.log(res.data)
          that.setData({
             coulist: res.data.data.coulist,
           });
@@ -100,7 +98,7 @@ Component({
       // touchmove事件
       this.data.newmark = e.touches[0].pageX;
       // 手指从左向右移动
-      if (this.data.mark < this.data.newmark) {
+      if (this.data.newmark - this.data.mark > 12) {
           this.istoright = true;
           this.setData({
             scrollindex:0
@@ -108,7 +106,7 @@ Component({
       }
       
       // 手指从右向左移动
-      if (this.data.mark > this.data.newmark) {
+      if (this.data.mark - this.data.newmark > 12) {
           this.istoright = false;
       }
       this.data.mark = this.data.newmark;

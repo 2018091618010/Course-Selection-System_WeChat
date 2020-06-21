@@ -12,36 +12,41 @@ Component({
    * 组件的初始数据
    */
     data: {
-        coursename:"微信小程序",
-        teacher:"teacher1",
-        captain: "刘XX",
-        cap_contactway: "4008-823-823",
-        members:["张三","李四","王五"],
-        id:1
+      CourseSelectInfolist:[],
+      coursename:"",
+      teamleader:"",
+      teacher:"",
+      teamid:""
     },
-    
+
+    lifetimes: {
+      attached: function() {
+      //获取待审核的队伍信息
+      var that = this
+      var user = wx.getStorageSync('userdata')
+      wx.request({
+          url: "https://autumndreams.club/selcourse/Select/mycourse",
+          method:'GET',
+          data:{
+             id:user.puId
+          },
+          success: function (res) {
+           //  console.log(res.data)
+           that.setData({
+            CourseSelectInfolist: res.data.data.CourseSelectInfolist,
+            coursename:res.data.data.课程名字,
+            teamleader:res.data.data.队长姓名,
+            teamid:res.data.data.队伍编号,
+            teacher:res.data.data.老师姓名
+            });
+          }
+      })
+    },
+  },
   /**
    * 组件的方法列表
    */
   methods: {
-    getval(e){
-          // console.log(e.detail.value)
-          this.setData({ val: e.detail.value})   
-      },
-      
-      add(){      
-          var data1 = this.data.inflist;    
-          data1.push(this.data.val)      
-          this.setData({list:data1,val:''})      
-      },
-      
-      del(e){      
-          console.log(e.target.dataset.index)   
-   
-          var i = e.target.dataset.index;      
-          var data2 = this.data.inflist;      
-          data2.splice(i,1)     
-          this.setData({list:data2})      
-      },
+    
   }  
 })

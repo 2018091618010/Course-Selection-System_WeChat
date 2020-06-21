@@ -8,7 +8,7 @@ page{
 }
 
 .cart-box{
-    padding-bottom: 100rpx;
+    padding-bottom: 20rpx;
     padding-left: 30rpx;
     width: 92%;
 }
@@ -16,7 +16,6 @@ page{
     margin-bottom:30rpx;
     position: relative;
     padding: 20rpx 20rpx 20rpx 200rpx;
-    height: 185rpx;
     border-radius: 15px;
     background-color: rgb(110, 146, 247);
     color:#fff;
@@ -33,28 +32,43 @@ page{
     font-size:45rpx;
     font-weight:bold;
     display: inline-block;
+    width: 100%;
     line-height: 45rpx;
     overflow: hidden;
+    padding-bottom: 10rpx;
 }
 .cart-list .cart-pro-inf{
     display: inline-block;
-    width: 300rpx;
-    height: 105rpx;
     line-height: 50rpx;
     overflow: hidden;
+    width: 100%;
 }
-
-.cart-del{
-    position: absolute;
-    right: 20rpx;
-    bottom: 20rpx;
-    width: 80rpx;
-    height: 80rpx;
-    line-height: 80rpx;
+.cart-accept{
+    display: inline-block;
+    line-height: 50rpx;
+    overflow: hidden;
+    height: 85rpx;
+    filter:contrast(3.2);
+    border-radius: 40rpx;
+    opacity: 0.88;
+    background-color: rgb(110, 146, 247);
+    color: white;
     text-align: center;
-    font-size: 44rpx;
-}
-
+    font-weight: bold;
+  }
+.cart-refuse{
+    display: inline-block;
+    line-height: 50rpx;
+    overflow: hidden;
+    height: 85rpx;
+    border-radius: 40rpx;
+    filter:contrast(3.2);
+    opacity: 0.88;
+    background-color: rgb(110, 146, 247);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+  }
 .cart-no-data{
     padding:40rpx 0;
     color: #999;

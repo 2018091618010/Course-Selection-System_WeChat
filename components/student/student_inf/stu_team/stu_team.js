@@ -13,43 +13,69 @@ Component({
    */
     data: {
       scrollindex:0,  //当前页面的索引值
-      totalnum:3,  //总共页面数
+      totalnum:0,  //总共页面数
       starty:0,  //开始的位置x
       endy:0, //结束的位置y
       critical: 100, //触发翻页的临界值
       margintop:0,  //滑动下拉距离
-      coulist: [
-        {
-        courseid: "2020051610001",
-        teaid: "2019001",
-        coursename: "C++",
-        teamnumber: 7,
-        coursestatus: "课程未满",
-        courseinfo: "描述xxx"
-        },
-        {
-        courseid: "2020051610001",
-        teaid: "2019001",
-        coursename: "java",
-        teamnumber: 7,
-        coursestatus: "课程未满",
-        courseinfo: "描述xxx"
-        },
-        {
-        courseid: "2020051610001",
-        teaid: "2019001",
-        coursename: "java",
-        teamnumber: 7,
-        coursestatus: "课程未满",
-        courseinfo: "描述xxx"
-        }
-      ]
+      teamlist:[],
+      apply:false
     },
-    
+    lifetimes: {
+      attached: function() {
+      var that = this
+      var user = wx.getStorageSync('userdata')
+      wx.request({
+          url: "https://autumndreams.club/selcourse/Select/myteam",
+          method:'GET',
+          data:{
+             id:user.puId
+          },
+          success: function (res) {
+            if(res.data.message == "success"){ 
+              that.setData({
+                totalnum:(res.data.data.subject).length,
+                teamlist:res.data.data.subject,
+                });  
+                //判断我是否为该队伍队长 以及队伍状态是否为待审核 
+              var curteam = that.data.teamlist[that.data.scrollindex]
+              if(curteam.leaderid == user.puId && curteam.TeamInfo.teamstatus == "待审核"){
+                  that.setData({
+                    apply:true
+                  })
+              }
+            }
+          }
+      })
+ 
+    },
+  },
   /**
    * 组件的方法列表
    */
   methods: {
+    joincourse:function(){
+      var that = this
+      var curteam = that.data.teamlist[that.data.scrollindex]
+      wx.request({
+        url: "https://autumndreams.club/selcourse/Select/joinclass",
+        method:'POST',
+        data:{
+           teamid:curteam.TeamInfo.teamid
+        },
+        success: function (res) {
+          if(res.data.message == "success"){ 
+            wx.showModal({
+              title: '申请成功！',
+              showCancel:false,
+              content:'请耐心等待老师的回复',
+              confirmText:'知道了'
+              })
+          }
+        }
+    })
+      
+    },
     scrollTouchstart:function(e){
       let py = e.touches[0].pageY;
       this.setData({
@@ -70,6 +96,7 @@ Component({
     },
     scrollTouchend:function(e){
       let d = this.data;
+     
       if(d.endy-d.starty >100 && d.scrollindex>0){
         this.setData({
           scrollindex: d.scrollindex-1
@@ -84,6 +111,19 @@ Component({
           endy:0,
           margintop:0
       })
+      //判断我是否为该队伍队长 以及队伍状态是否为待审核 
+      var user = wx.getStorageSync('userdata')
+      var curteam = this.data.teamlist[this.data.scrollindex]
+      if(curteam.leaderid == user.puId && curteam.TeamInfo.teamstatus == "待审核"){
+        this.setData({
+          apply:true
+        })
+      }
+      else{
+        this.setData({
+          apply:false
+        })
+      }
     },
   }  
 })

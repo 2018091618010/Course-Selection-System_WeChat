@@ -17,3 +17,13 @@ page {
 .fw-600{font-weight: 600;}
 .fw-700{font-weight: 700;}
 .fw-900{font-weight: 900;}
+
+/* 全局样式 */
+.page {
+  font-family: 'PingFang SC',
+               'Helvetica Neue',
+               Helvetica,
+               'Droid Sans Fallback',
+               'Microsoft Yachei',
+               sans-serif;
+}

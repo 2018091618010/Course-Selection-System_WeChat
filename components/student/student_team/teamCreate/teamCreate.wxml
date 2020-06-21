@@ -1,0 +1,19 @@
+
+<form bindsubmit = "formSubmit">
+<view class="page">
+  <text class="title">创建队伍</text>
+    <view class="field-item vc">
+        <text class="field-item-label fw-700">课程ID</text>
+        <view class="field-item-val"><input name="courseid" placeholder="{{coursename}}"/></view>
+    </view>
+    <view class="field-item-2">
+    <text class="field-item-label fw-700">队伍描述</text>
+    <textarea class="courseinf" placeholder="详细的课程信息" name="teaminf"></textarea>
+    </view>
+</view>
+
+<view class="footer">
+    <button formType="submit" class="field-ok-left fw-600 cc" style="width: 40%;" hover-class="field-ok-hover" >确 定</button>
+    <button formType="reset"  class="field-ok-right fw-600 cc" style="width: 40%;" hover-class="field-ok-hover">重置</button>
+</view>
+</form>

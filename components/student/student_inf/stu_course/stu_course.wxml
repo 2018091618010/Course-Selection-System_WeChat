@@ -1,13 +1,14 @@
 <view class="main" >
-  <view class="teams" >
-    <view class="team">
+  <view class="teams" ><!--wx:for="{{CourseSelectInfolist}}" wx:key="index"-->
+    <view class="team" >
       <view class="coursename">{{coursename}}</view>
       <view class="teacher">老师：{{teacher}}</view>
       <view class="LINE"></view>
-      <view class="captain">队长：{{captain}}</view>
-      <view class="cap_contactway">联系方式：{{cap_contactway}}</view>
-      <view class="teammember" style="font-size: 15px; margin-left: 4%;margin-top: 30rpx;">队员：</view>
-      <view class="member" wx:for="{{item.members}}" wx:for-item="members">{{members}} </view>
+      <view class="teamid">队伍编号：NO{{teamid}}</view>
+      <view class="captain">队长：{{teamleader}}</view>
+      
+  <!--    <view class="teammember" style="font-size: 15px; margin-left: 4%;margin-top:20rpx;margin-bottom: 20rpx;">队员：</view>
+      <view class="member" wx:for="{{item.members}}" wx:for-item="members">{{item.members}} </view>-->
     </view> 
  </view>
 </view>

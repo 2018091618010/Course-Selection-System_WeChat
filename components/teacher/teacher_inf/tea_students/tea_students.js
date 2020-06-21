@@ -25,7 +25,7 @@ Component({
     var that = this
     var user = wx.getStorageSync('userdata')
     wx.request({
-        url: "http://www.justinstar.top/selcou/teacher/showcourse",
+        url: "https://autumndreams.club/selcou/teacher/showcourse",
         method:'GET',
         data:{
             teaid:user.puId
@@ -74,7 +74,7 @@ Component({
     var that = this;
       //根据课程id 查看课程学生信息
       wx.request({
-        url: "http://www.justinstar.top/selcou/teacher/showcoustu",
+        url: "https://autumndreams.club/selcou/teacher/showcoustu",
         method:'GET',
         data:{
           couid:this.data.courlist[idx].courseid
