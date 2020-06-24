@@ -1,10 +1,9 @@
 <view  class="container container-fill"> 
 	<view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
     <view wx:key="teamlist" wx:for="{{teamlist}}" class="section section01 {{scrollindex==index?'active2':''}}" style="background-repeat: no-repeat; background-size: 100% 100%;">
-			<view class="section-maintitle">队伍编号：<text style="color: rgb(127, 22, 224);">{{item.TeamInfo.teamid}}</text></view>
-			<text class="section-subtitle">课程名称：{{item.course.coursename}}</text>	
+			<view class="section-maintitle"><text style="color: rgb(42, 44, 177);">{{item.course.coursename}}</text></view>
 			<view class="section-subtitle">队伍描述：<text style="color: rgb(54, 57, 252);">{{item.TeamInfo.teaminfo}}</text></view>
-			<view class="section-subtitle">队伍状态：<text style="color: rgb(54, 57, 252);">{{item.TeamInfo.teamstatus}}</text></view>
+			<view class="section-subtitle">队伍状态：<text style="color: rgb(127, 22, 224);">{{item.TeamInfo.teamstatus}}</text></view>
 			<view class="section-subtitle">队长：<text style="color: rgb(54, 57, 252);">{{item.leadername}}  {{item.leaderid}}</text></view>
 			<text class="section-subtitle">队员: </text>
 			<view class="section-teammember" wx:for="{{item.Teamlist}}" wx:key="teamlist">
@@ -12,7 +11,7 @@
 					<text> 专业：{{item.stumajor}}</text>
 					<text style="display: block; padding-top: 10rpx;">联系方式：{{item.phone}}</text>
 			</view>
-			<button wx:if="{{apply}}" class='join' size='mini' bindtap='joincourse'>申请加入课程</button> 
+			<button wx:if="{{apply}}" class='join' size='mini' bindtouchend='joincourse'>申请加入课程</button> 
 		</view>
     </view>
 </view>

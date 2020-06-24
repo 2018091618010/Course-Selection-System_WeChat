@@ -21,7 +21,7 @@
   font-weight: bold; 
   position: fixed;
   bottom: 15px;
-  margin-left: 225px;
+  margin-left: 545rpx;
   margin-bottom: 95px;
   justify-content: center;
   display: inline-block;

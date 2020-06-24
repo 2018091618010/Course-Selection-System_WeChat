@@ -4,7 +4,7 @@
       <view class="coursename">{{coursename}}</view>
       <view class="teacher">老师：{{teacher}}</view>
       <view class="LINE"></view>
-      <view class="teamid">队伍编号：NO{{teamid}}</view>
+      <view class="teamid">队伍编号：{{teamid}}</view>
       <view class="captain">队长：{{teamleader}}</view>
       
   <!--    <view class="teammember" style="font-size: 15px; margin-left: 4%;margin-top:20rpx;margin-bottom: 20rpx;">队员：</view>

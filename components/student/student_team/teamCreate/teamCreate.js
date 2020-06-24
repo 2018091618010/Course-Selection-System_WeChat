@@ -36,7 +36,9 @@ Component({
         data: { 
           courseid2: e.detail.value.courseid, 
           stuid2: user.puId, 
-          teaminfo: e.detail.value.teaminf 
+          teamid: "",
+          teaminfo: e.detail.value.teaminf,
+          teamstatus: ""
         },
         //header: {"Content-Type":"application/x-www-form-urlencoded"},
         success: function (res) {
@@ -48,7 +50,14 @@ Component({
               duration: 2000
             })
           }
-          else {
+          else if(res.data.message == "不可重复创建队伍"){
+            wx.showModal({
+              title: '不可重复创建队伍！',
+              showCancel:false,
+              confirmText:'知道了',
+              confirmColor:'red'
+              })
+          }else{
             wx.showModal({
               title: '队伍创建失败！',
               showCancel:false,

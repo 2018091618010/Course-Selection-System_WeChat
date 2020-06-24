@@ -19,14 +19,8 @@ Component({
     teamlist: [],
   },  
   lifetimes: {
-    // test:function(){
-    //   let dom=this.document.querySelectorAll('.domX')
-    // console.log(dom,'scroll')
-
-    // },
-    
+ 
     attached: function() {
-
     var that = this
     wx.getSystemInfo({
             success: function(res) {
@@ -43,11 +37,9 @@ Component({
     wx.request({
         url: "https://autumndreams.club/selcourse/student/ableteam",
         method:'GET',
-       
         success: function (res) {
-         //  console.log(res.data)
          that.setData({
-            teamlist: res.data.data.teamlist,
+            teamlist: res.data.data.subject,
           });
         }
     })  
@@ -64,9 +56,7 @@ Component({
             }
           });*/
     },
-
   },
-
   /**
    *  跳转搜索页面
    * suo: function (e) {
@@ -76,13 +66,8 @@ Component({
   },
    *  
    */
- 
-  
-
   mounted () {
     // this.initList()
-   
-    
     var that = this
     window.addEventListener("scroll", function () {
       // if(document.body.scrollHeight <= window.screen.height + document.body.scrollTop){
@@ -116,7 +101,7 @@ Component({
       method:'POST',
       data:{
           stuid:(this.data.stuid),
-          teamid:(this.data.teamlist[this.data.scrollindex].teamid),
+          teamid:(this.data.teamlist[this.data.scrollindex].teamlist.teamid),
           text: this.data.text,       
       },
       header: {"Content-Type":"application/x-www-form-urlencoded"},
@@ -133,7 +118,7 @@ Component({
         });
       }else{
         wx.showModal({
-          title: '申请提交失败！',
+          title: '申请失败',
           showCancel:false,
           confirmText:'知道了',
           confirmColor: 'red'

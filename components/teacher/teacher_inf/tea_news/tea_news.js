@@ -29,11 +29,12 @@ Component({
             teaid:user.puId
         },
         success: function (res) {
-         //  console.log(res.data)
+         if(res.data.code == 0){
          that.setData({
             news: res.data.data.teamlist,
           });
         }
+      }
     })
   },
   },
@@ -51,7 +52,6 @@ Component({
 
       setTimeout(() => {
         let news = this.data.news;
-        console.log(news);
         if(!news.length){
           this.setData({
             hasList: false
@@ -64,19 +64,7 @@ Component({
       },1000);
       
     },
-    /**
-     * 选中事件
-     */
-    selectList(e) {
-      const index = e.currentTarget.dataset.index;
-      let news = this.data.news;
-      const selected = news[index].selected;
-      news[index].selected = !selected;
-      this.setData({
-        news: news
-      });
-      this.getTotalPrice();
-    },
+
    //关闭消息
     deleteList(e) {
       const index = e.currentTarget.dataset.index;
@@ -102,13 +90,19 @@ Component({
           teamstatus:"已通过"
         },
         success: function (res) {
-          if (res.data.message == "success") {
+          if (res.data.code == 0) {
             wx.showModal({
               title: '已接受该队伍！',
               showCancel:false,
               confirmText:'知道了',
               })
             that.deleteList(e)
+          }else{
+            wx.showModal({
+              title: res.data.message,
+              showCancel:false,
+              confirmText:'知道了',
+              })
           }
         }
       })
@@ -124,13 +118,19 @@ Component({
           teamstatus:"未通过"
         },
         success: function (res) {
-          if (res.data.message == "success") {
+          if (res.data.code == 0) {
             wx.showModal({
               title: '已拒绝该队伍！',
               showCancel:false,
               confirmText:'知道了',
               })
             that.deleteList(e)
+          }else{
+            wx.showModal({
+              title: res.data.message,
+              showCancel:false,
+              confirmText:'知道了',
+              })
           }
         }
       })

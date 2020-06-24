@@ -33,11 +33,11 @@
         <view  class="container container-fill"> 
 	        <view class="scroll-fullpage" bindtouchstart="scrollTouchstart" bindtouchmove="scrollTouchmove" bindtouchend="scrollTouchend" style="transform:translateY(-{{scrollindex*100}}%);margin-top: {{margintop}}px">
                 <view wx:key="coulist" wx:for="{{coulist}}" class="section section01 {{scrollindex==index?'active2':''}}" style=" background-repeat: no-repeat; background-size: 100% 100%;">
-                    <text class="section-maintitle">{{item.coursename}}</text>
-                    <text class="section-subtitle">课程id：{{item.courseid}}</text>
-                    <text class="section-subtitle">{{item.coursestatus}}</text>
-                    <text class="section-subtitle">队伍数量：{{item.teamnumber}}</text>
-                    <text class="section-subtitle">详细：{{item.courseinfo}}</text>
+                    <text class="section-maintitle" style="color: rgb(42, 44, 177);">{{item.couname}}</text>
+                    <text class="section-subtitle">课程id：{{item.couid}}</text>
+                    <text class="section-subtitle" style="color: #732daf;">{{item.coursestatus}}</text>
+                    <text class="section-subtitle">队伍情况：{{item.curteamnumber}} / {{item.preteamnumber}}</text>
+                    <text class="section-subtitle">详细：{{item.couresinfo}}</text>
                 </view>
             </view>
         </view> 

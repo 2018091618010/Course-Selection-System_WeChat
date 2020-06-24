@@ -45,16 +45,17 @@ Component({
           var url ="https://autumndreams.club/selcou/teacher/putcourse";
           wx.request({
             url: url,
-            method:'GET',
+            method:'POST',
             data:{         
               courseinfo:couinf,
               coursename:couname,   
               teaid:user.puId,
               number:Number(Number(this.data.index)+1)
             },
+            header: {"Content-Type":"application/x-www-form-urlencoded"},
           success: function (res) {
             console.log(res);
-            if (res.data.message == "success"){
+            if (res.data.code == 0){
               wx.showModal({
                  title: '课程发布成功！',
                  showCancel:false,
@@ -62,7 +63,7 @@ Component({
                  })
             }else{
               wx.showModal({
-                title: '课程发布失败！',
+                title: res.data.message,
                 showCancel:false,
                 confirmText:'知道了',
                 })

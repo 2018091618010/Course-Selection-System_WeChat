@@ -35,9 +35,10 @@ Page({
             password: this.data.password,
             teaid: this.data.puId
           },
-          method: "GET",
+          method: "POST",
+          header: {"Content-Type":"application/x-www-form-urlencoded"},
           success: function (res) {
-            if (res.data.message == "success") {
+            if (res.data.code == 0) {
               wx.setStorageSync('userdata',that.data)//设置缓存
               wx.setStorageSync('name',res.data.data.teaname)
               wx.showToast({

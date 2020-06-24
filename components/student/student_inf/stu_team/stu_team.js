@@ -39,7 +39,7 @@ Component({
                 });  
                 //判断我是否为该队伍队长 以及队伍状态是否为待审核 
               var curteam = that.data.teamlist[that.data.scrollindex]
-              if(curteam.leaderid == user.puId && curteam.TeamInfo.teamstatus == "待审核"){
+              if(curteam.leaderid == user.puId && curteam.TeamInfo.teamstatus == "待提交"){
                   that.setData({
                     apply:true
                   })
@@ -54,17 +54,22 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
     joincourse:function(){
       var that = this
+      console.log(that.data.scrollindex)
+      console.log(that.data.teamlist[that.data.scrollindex])
       var curteam = that.data.teamlist[that.data.scrollindex]
       wx.request({
         url: "https://autumndreams.club/selcourse/Select/joinclass",
-        method:'POST',
+        method:'GET',
         data:{
            teamid:curteam.TeamInfo.teamid
         },
         success: function (res) {
-          if(res.data.message == "success"){ 
+          if(res.data.message == "success"){
+            //console.log(curteam.TeamInfo.teamid) 
+            //console.log(res) 
             wx.showModal({
               title: '申请成功！',
               showCancel:false,
@@ -114,7 +119,7 @@ Component({
       //判断我是否为该队伍队长 以及队伍状态是否为待审核 
       var user = wx.getStorageSync('userdata')
       var curteam = this.data.teamlist[this.data.scrollindex]
-      if(curteam.leaderid == user.puId && curteam.TeamInfo.teamstatus == "待审核"){
+      if(curteam.leaderid == user.puId && curteam.TeamInfo.teamstatus == "待提交"){
         this.setData({
           apply:true
         })

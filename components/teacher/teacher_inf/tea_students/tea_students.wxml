@@ -3,7 +3,8 @@
 
   <view bindtap='bindShowList' data-idx="{{index}}"  class="top">
   <!-- -->
-      <view class="coursename">{{item.coursename}}</view>
+      <view class="coursename">{{item.couname}}</view>
+      <button class="cancelclass" style="width:190rpx;" data-idx="{{index}}" bindtap="cancelclass">结束选课</button>
       <image class="dropicon"
       style="transform:{{flag[index]==1?'rotate('+a1+'deg)':'rotate(0deg)'}}; left:90%; " src="/img/unfold.png"></image>
   </view>

@@ -47,7 +47,6 @@ Component({
    */
   methods: {
 
-    
 // *点击下拉*
   bindShowList(e){
     var idx = e.currentTarget.dataset.idx;
@@ -66,7 +65,6 @@ Component({
           arr[index]=0;
         }
       } 
-      console.log(arr);
       this.setData({
         flag:arr
       })
@@ -77,10 +75,10 @@ Component({
         url: "https://autumndreams.club/selcou/teacher/showcoustu",
         method:'GET',
         data:{
-          couid:this.data.courlist[idx].courseid
+          couid:this.data.courlist[idx].couid
         },
         success: function (res) {
-            if (res.data.message == "success") {
+            if (res.data.code == 0) {
             that.setData({
               teamlist: res.data.data.teamlist
             });
@@ -88,5 +86,44 @@ Component({
         }
       })
   },
+  //结束选课
+  cancelclass(e) {
+    var idx = e.currentTarget.dataset.idx;
+    var that = this;
+    wx.showModal({
+      title: '结束选课',
+      content: '确定要结束该课程选课？',
+      showCancel: true,//是否显示取消按钮
+      cancelColor:'green',//取消文字的颜色
+      confirmColor: 'red',//确定文字的颜色
+      success: function (res) {
+         if (res.cancel) {
+            //点击取消,默认隐藏弹框
+         } else {
+            //点击确定 
+              wx.request({
+                url: "https://autumndreams.club/selcou/teacher/showcoustu",
+                method:'GET',
+                data:{
+                  couid:that.data.courlist[idx].couid
+                },
+                success: function (res) {
+                    if (res.data.code == 0) {
+                      wx.showModal({
+                        title: '已结束该课程选课',
+                        showCancel:false,
+                        confirmText:'知道了'
+                        })
+                    }
+                }
+              })
+         }
+      },
+      fail: function (res) { },//接口调用失败的回调函数
+      complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+   })
+
+     
+  }
   }
 })

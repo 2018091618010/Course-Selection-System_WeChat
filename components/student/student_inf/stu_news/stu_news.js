@@ -10,7 +10,8 @@ Component({
   data: {
     teamnews:[], 
     coursenews:[],              
-    hasList:false,          
+    hasList:false,  
+    message:""        
   },
   lifetimes: {
     attached: function() {
@@ -37,17 +38,16 @@ Component({
             },
             success: function (res) {
             // 选择 "applystatus": "待同意" 的消息
-            if(res.data.message == "success"){
-                var messagelist = res.data.data.subject
-                for (let index2 = 0; index2 < messagelist.length; index2++) {
-                  if(messagelist[index2].message.applystatus == "待同意")
-                    teamnews.push(messagelist[index2]); 
+                if(res.data.message == "success"){
+                    var messagelist = res.data.data.subject
+                    for (let index2 = 0; index2 < messagelist.length; index2++) {
+                      if(messagelist[index2].message.applystatus == "待同意")
+                        teamnews.push(messagelist[index2]); 
+                    }
+                  }
                 }
-              }
-            }
             })      
           //申请课程反馈的消息
-
           wx.request({
               url: "https://autumndreams.club/selcourse/Select/seejoinclassmessage",
               method:'GET',
@@ -55,12 +55,21 @@ Component({
                 teamid:myteam[index]
               },
               success: function (res) {
-                if(res.data.message == "success"){
-                  coursenews.push({
-                    teamid:myteam[index], 
-                    status:res.data.data.status
-                  });
-                }
+                    //根据teamid查看team信息
+                    if(res.data.message == "success"){
+                      wx.request({
+                        url: "https://autumndreams.club/selcourse/student/selectteam",
+                        method:'GET',
+                        data:{
+                          id:myteam[index]
+                        },
+                        success: function (res) {
+                          if(res.data.message == "success"){ 
+                            coursenews.push(res.data.data.team.coursename);
+                          }
+                        }
+                      })  
+                    }
               }
             })  
           } 
@@ -72,6 +81,7 @@ Component({
                 hasList:true
               });    
         }, 1000); //延迟1s
+        
 
     },
     ready: function () {
@@ -101,24 +111,34 @@ Component({
     accept(e){
       var that = this
       var teamid = e.currentTarget.dataset.teamid
-      var user = wx.getStorageSync('userdata')
+      var stuid = e.currentTarget.dataset.stuid
       wx.request({
         url: "https://autumndreams.club/selcourse/Select/dealteammessage",
         method:'GET',
         data:{
           status:"已同意",
-          stuid:user.puId,
+          stuid:stuid,
           teamid:teamid
         },
         success: function (res) {
           console.log(res.data)
-          if(res.data.message == "success"){
-            wx.showModal({
+          if(res.data.code == 0){
+            if (res.data.message == "该同学加入其他队伍") {
+              wx.showModal({
+                title: '该同学已经加入其他队伍！',
+                showCancel:false,
+                confirmText:'拒绝',
+                confirmColor:'red'
+                })
+            }
+            else{
+              wx.showModal({
                 title: '已接受该同学！',
                 showCancel:false,
                 confirmText:'知道了',
                 })
             that.deleteteamlist(e) 
+            }
           }
         }  
       })    
@@ -127,18 +147,18 @@ Component({
     refuse(e){
       var that = this
       var teamid = e.currentTarget.dataset.teamid
-      var user = wx.getStorageSync('userdata')
+      var stuid = e.currentTarget.dataset.stuid
       wx.request({
         url: "https://autumndreams.club/selcourse/Select/dealteammessage",
         method:'GET',
         data:{
           status:"已拒绝",
-          stuid:user.puId,
+          stuid:stuid,
           teamid:teamid
         },
         success: function (res) {
           console.log(res.data)
-          if(res.data.message == "success"){
+          if(res.data.code == 0){
             wx.showModal({
                 title: '已拒绝该同学！',
                 showCancel:false,

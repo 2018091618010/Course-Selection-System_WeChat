@@ -4,20 +4,20 @@
             <view class="cart-list" wx:for="{{teamnews}}" wx:key="index">
                 <image class="cart-thumb" src="/img/reminder.png"></image>
                 <text class="cart-pro-name">入队申请</text>
-                <text class="cart-pro-inf">队伍编号：{{item.message.teamid3}}</text>
+                <text class="cart-pro-inf">课程名字：{{item.coursename}}</text>
                 <text class="cart-pro-inf">学生名字：{{item.studentname}}  学号：{{item.message.stuid3}}</text>
                 <text class="cart-pro-inf">申请备注：{{item.message.applycontext}}</text>
-                <button class="cart-accept" bindtap="accept" data-teamid='{{item.message.teamid3}}' style="width: 200rpx; margin-top:30rpx;">接受</button>
-                <button class="cart-refuse" bindtap="refuse" data-teamid='{{item.message.teamid3}}' style="width: 200rpx; margin-left: 30rpx; margin-top:30rpx;">拒绝</button>
+                <button class="cart-accept" bindtap="accept" data-teamid='{{item.message.teamid3}}' data-stuid='{{item.message.stuid3}}' style="width: 200rpx; margin-top:30rpx;">接受</button>
+                <button class="cart-refuse" bindtap="refuse" data-teamid='{{item.message.teamid3}}' data-stuid='{{item.message.stuid3}}' style="width: 200rpx; margin-left: 30rpx; margin-top:30rpx;">拒绝</button>
             </view>
         </view>   
 
         <view class="cart-box">
-            <view class="cart-list" wx:for="{{coursenews}}" wx:key="{{couindex}}" style="background-color: #21bb29;">
+            <view class="cart-list" wx:for="{{coursenews}}" wx:key="couindex" style="background-color: #21bb29;">
                 <image class="cart-thumb" src="/img/reminder.png"></image>
                 <text class="cart-pro-name">申请课程反馈信息</text>
-                <text class="cart-pro-name" style="font-size:32rpx;">队伍编号    {{item.teamid}}</text>
-                <text class="cart-pro-name" style="font-size:38rpx;">{{item.status}}</text>
+                <text class="cart-pro-name" style="font-size:32rpx;">课程：{{item}}</text>
+                <text class="cart-pro-name" style="font-size:38rpx;">已通过！</text>
             </view>
         </view>   
     </view>

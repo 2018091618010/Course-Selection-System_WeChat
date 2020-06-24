@@ -16,7 +16,12 @@ Page({
 },
 
 submitOpinion:function(){
-    var that = this
+    wx.showModal({
+        title: '通知',
+        content: '我们收到您的反馈会及时联系您，感谢您的参与！',
+        showCancel:false,
+    })
+/*    var that = this
     wx.request({
         url: 'http://' + app.globalData.apiUrl + '/bookshare?m=home&c=Api&a=submitOpinion&opinion=' + that.data.opinion + "&userId=" + app.globalData.userId,
         method: "GET",
@@ -53,6 +58,6 @@ submitOpinion:function(){
                 duration: 2000
             })
         }
-    })
+    })*/
 }
 })

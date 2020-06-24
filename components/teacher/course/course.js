@@ -39,7 +39,7 @@ Component({
             url: "https://autumndreams.club/selcou/teacher/showname",
             method:'GET',
             success: function (res) {
-                if (res.data.message == "success") {
+                if (res.data.code == 0) {
                 that.setData({
                     tealist: res.data.data
                 });
@@ -67,9 +67,11 @@ Component({
             teaid:index
         },
         success: function (res) {
+        if (res.data.code == 0) {
          that.setData({
             coulist: res.data.data.coulist,
           });
+        }
         }
     })  
   },
